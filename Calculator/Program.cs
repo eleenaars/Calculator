@@ -1,165 +1,86 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿Console.WriteLine("Welkom bij de calculator van Eva!");
+Console.WriteLine("We gaan getallen bij elkaar optellen.");
+Console.WriteLine("Voer een getal in:");
 
-//opdracht 1: getallen optellen
-//opdracht 2: operators zelf toevoegen
-//opdracht 3: meerdere getallen tegelijk optellen (spatie of enter)
-//nb. switch - case verdiepen
-//nb. github uitzoeken
+bool invoerwaarde1Gelukt = false;
+        bool invoerwaarde2Gelukt = false;
+        int getal1 = 0;
+        int getal2 = 0;
+        int invoerwaardeTotaal = 0;
 
+do
+{
+    var invoerwaarde1 = Console.ReadLine();
+        invoerwaarde1Gelukt = int.TryParse(invoerwaarde1, out getal1);
 
-
-
-
-
-Console.WriteLine("Welkom bij de calculator van Eva!");
-Console.WriteLine();
-GetNumber();
-
-void GetNumber() {
-
-    long number = 0;
-    long sum = 0;
-    bool validInput = false;
-
-    do
+    if (invoerwaarde1Gelukt == true)
     {
-        Console.WriteLine();
-        Console.WriteLine($"Voer een geldig getal in of sluit af met een \"X\".");
-        var input = Console.ReadLine();
-        validInput = long.TryParse(input, out number);
-                
-
-            switch (validInput)
-            {
-                case (false) when input == "":
-                    Console.WriteLine();
-                    Console.WriteLine("Er is niets ingevoerd. Probeer het opnieuw.");
-                    break;
-
-                case (false) when input?.ToLower() == "x":
-                    Console.WriteLine();
-                    Console.WriteLine("Oké, dankjewel.");
-                    Console.WriteLine($"Het totaal bijft: {sum}");
-                    Console.WriteLine("Tot ziens!");
-                    break;
-
-                case (false):
-                    Console.WriteLine();
-                    Console.WriteLine($"{input} is geen geldig getal. Probeer het opnieuw.");
-                    break;
-
-                case (true):
-                    Console.WriteLine();
-                    Console.WriteLine($"Het getal is: {number}");
-
-                    sum += number;
-                    Console.WriteLine();
-                    Console.WriteLine($"Het totaal is op dit moment: {sum}");
-                    Console.WriteLine();
-                    Console.WriteLine("Wil je er een getal bij optellen? Voer een geldig getal in of sluit af met een \"X\".");
-                    break ;                
-                
-                default:
-                    Console.WriteLine();
-                    Console.WriteLine("Test 1 2 3");
-                    break;
-            }
-        }
-
-
-
-
-
-        //geen geldig getal             validValue = false
-        //geen waarde                   validValue = false  value = ""  
-        //juiste waarde : een getal     validValue = true   string/naar int
-        //x                             validValue = false  value = x
-
-
-
-        
-
-
-
-    while (validInput == false);
+        Console.WriteLine($"Je getal is: {invoerwaarde1}");
+        continue;
+    }
+    else if (invoerwaarde1 == "")
+    {
+        Console.WriteLine("Je hebt niets ingevoerd.");
+        Console.WriteLine($"Probeer het opnieuw.");
+    }
+    else
+    {
+    Console.WriteLine($"{invoerwaarde1} is een ongeldige invoer. Probeer het opnieuw.");
+    }
 }
+while (invoerwaarde1Gelukt == false) ;
 
+Console.WriteLine();
+Console.WriteLine("Voer een getal in:");
 
+do
+{
+    var invoerwaarde2 = Console.ReadLine();
+    invoerwaarde2Gelukt = int.TryParse(invoerwaarde2, out getal2);
 
+    if (invoerwaarde2Gelukt == true)
+    {
+        Console.WriteLine($"Je getal is: {invoerwaarde2}");
+        continue;
+    }
+    else if (invoerwaarde2 == "")
+    {
+        Console.WriteLine("Je hebt niets ingevoerd. Probeer het opnieuw.");
+    }
+    else
+    {
+        Console.WriteLine($"{invoerwaarde2} is een ongeldige invoer. Probeer het opnieuw.");
+    }
+}
+while (invoerwaarde2Gelukt == false);
 
+invoerwaardeTotaal = getal1 + getal2;
+Console.WriteLine("De som van de getallen is: " + invoerwaardeTotaal);
 
+Console.WriteLine();
+Console.WriteLine("Wil je nog een getal erbij optellen? Voer \"J\" of \"N\" in.");
 
+string? input;
 
+do
+{
+    input = Console.ReadLine();
 
-
-
-//        if (value == "")
-//        {
-//            Console.WriteLine();
-//            Console.WriteLine("Er is niets ingevoerd. Probeer het opnieuw.");
-//        }
-//        else if (validValue == false)
-//        {
-//            Console.WriteLine();
-//            Console.WriteLine($"{value} is geen geldig getal. Probeer het opnieuw.");
-//        }
-//        else
-//        {
-//            Console.WriteLine();
-//            Console.WriteLine($"Het getal is: {number}");
-
-//            sum += number;
-//            Console.WriteLine();
-//            Console.WriteLine($"Het totaal is op dit moment: {sum}");
-//        }
-//    }
-//    while (validValue == false);
-//}
-
-//void GetExtraNumber()
-//{
-//    Console.WriteLine();
-//    Console.WriteLine("Wil je er een getal bij optellen? Voer een geldig getal in of sluit af met een \"X\".");
-
-//    string? input = "";
-
-//    while (input?.ToLower() != "x")
-//    {
-//        {
-//            input = Console.ReadLine();
-
-//            if (input == "")
-//            {
-//                Console.WriteLine("Er is niets ingevoerd. Probeer het opnieuw.");
-//            }
-//            else if (input?.ToLower() == "x")
-//            {
-//                Console.WriteLine();
-//                Console.WriteLine("Oké, dankjewel.");
-//                Console.WriteLine($"Het totaal bijft: {sum}");
-//                Console.WriteLine("Tot ziens!");
-//                break;
-//            }
-
-
-
-
-//            else if (input?.ToLower() == "j")
-//            {
-//                GetNumber();
-
-//                Console.WriteLine();
-//                Console.WriteLine("Wil je nog een getal erbij optellen? Voer \"J\" of \"N\" in.");
-//            }
-
-//            else
-//            {
-//                Console.WriteLine();
-//                Console.WriteLine($"{input} is geen geldige invoer.");
-//                Console.WriteLine();
-//                Console.WriteLine("Wil je er een getal bij optellen? Voer een geldig getal in of sluit af met een \"X\".");
-//            }
-//        }
-//    }
-//}
-            
+    if ((input == "J") || (input == "j"))
+    {
+        Console.WriteLine("We komen nu in een loop, dus ik laat het even hierbij :-)");
+    }
+    else if ((input == "N") || (input == "n"))
+    {
+        Console.WriteLine("Oké, dankjewel en tot ziens!");
+    }
+    else if (input == "")
+    {
+        Console.WriteLine("Je hebt niets ingevoerd. Probeer het opnieuw.");
+    }
+    else
+    {
+        Console.WriteLine($"{input} is een ongeldige invoer. Probeer het opnieuw.");
+    }
+}
+while ((input != "J") && (input != "j") && (input != "N") && (input != "n"));
