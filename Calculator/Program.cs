@@ -22,9 +22,17 @@ Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 Console.WriteLine();
-GetNumber();
 
-static void GetNumber()
+int totaal = GetSum();
+
+Console.WriteLine();
+Console.WriteLine("Oké, dankjewel.");
+Console.WriteLine($"Het eindtotaal is: {totaal}");
+Console.WriteLine("Tot ziens!");
+
+
+
+static int GetSum()
 {
     string? input;
     int sum = 0;
@@ -43,10 +51,6 @@ static void GetNumber()
                 break;
 
             case false when input?.ToLower() == "x":
-                Console.WriteLine();
-                Console.WriteLine("Oké, dankjewel.");
-                Console.WriteLine($"Het totaal bijft: {sum}");
-                Console.WriteLine("Tot ziens!");
                 break;
 
             case true when number > 1000000:
@@ -76,4 +80,6 @@ static void GetNumber()
         }
     }
     while (input?.ToLower() != "x");
+
+    return sum;
 }
