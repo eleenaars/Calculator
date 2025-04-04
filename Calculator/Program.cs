@@ -24,9 +24,9 @@ Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Console.WriteLine();
 GetNumber();
 
-void GetNumber()
+static void GetNumber()
 {
-    string? input = "";
+    string? input;
     int sum = 0;
 
     do
