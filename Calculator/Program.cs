@@ -6,34 +6,40 @@
 //nb. switch - case verdiepen
 
 
-
-
-
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+Console.WriteLine();
 Console.WriteLine("Welkom bij de calculator van Eva!");
+Console.WriteLine("Dit is een calculator die getallen bij elkaar optelt.");
+Console.WriteLine();
+Console.WriteLine("Een geldig getal is een getal van -1.000.000 tot en met 1.000.000.");
+Console.WriteLine("Je kunt de calculator afsluiten door een \"X\" in te voeren.");
+Console.WriteLine();
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 Console.WriteLine();
 GetNumber();
 
 void GetNumber()
 {
-
-    int number = 0;
-    int sum = 0;
-    bool validInput = false;
     string? input = "";
+    int sum = 0;
 
     do
     {
-        Console.WriteLine();
         Console.WriteLine("Voer een geldig getal in of sluit af met een \"X\".");
         input = Console.ReadLine();
-        validInput = int.TryParse(input, out number);
-
+        bool validInput = int.TryParse(input, out int number);
 
         switch (validInput)
         {
             case false when input == "":
                 Console.WriteLine();
-                Console.WriteLine("Er is niets ingevoerd. Probeer het opnieuw.");
+                Console.WriteLine("Je hebt niets ingevoerd. Probeer het opnieuw.");
                 break;
 
             case false when input?.ToLower() == "x":
@@ -43,15 +49,24 @@ void GetNumber()
                 Console.WriteLine("Tot ziens!");
                 break;
 
+            case true when number > 1000000:
+                Console.WriteLine();
+                Console.WriteLine($"Het getal {number} is een te hoog getal. Probeer het opnieuw.");
+                break;
+
+            case true when number < -1000000:
+                Console.WriteLine();
+                Console.WriteLine($"Het getal {number} is een te laag getal. Probeer het opnieuw.");
+                break;
+
             case true:
                 Console.WriteLine();
                 Console.WriteLine($"Het getal is: {number}");
 
                 sum += number;
-                Console.WriteLine();
                 Console.WriteLine($"Het totaal is op dit moment: {sum}");
                 Console.WriteLine();
-                Console.WriteLine("Wil je er een getal bij optellen?");
+                Console.Write("Wil je er een getal bij optellen? ");
                 break;
 
             default:
@@ -62,11 +77,3 @@ void GetNumber()
     }
     while (input?.ToLower() != "x");
 }
-
-
-
-
-
-
-
-
